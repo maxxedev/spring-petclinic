@@ -18,6 +18,10 @@ package org.springframework.samples.petclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.util.ClassUtils;
+
+import java.net.URL;
+import java.net.URLClassLoader;
 
 /**
  * PetClinic Spring Boot Application.
@@ -29,6 +33,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PetClinicApplication {
 
 	public static void main(String[] args) {
+		URLClassLoader classLoader = (URLClassLoader) ClassUtils.getDefaultClassLoader();
+		for (URL url : classLoader.getURLs()) {
+			System.out.println(url);
+		}
 		SpringApplication.run(PetClinicApplication.class, args);
 	}
 
